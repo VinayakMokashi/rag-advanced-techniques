@@ -1,0 +1,32 @@
+# rag-advanced-techniques — shared environment for rag04, rag05, rag06, rag08
+#
+# Version pins explained:
+#   transformers<5     -> rag06's Jina model needs transformers.onnx, removed in v5.x
+#   huggingface-hub<1  -> required by transformers 4.x; also compatible with gradio 5.x
+#   gradio<6           -> gradio 6 needs huggingface-hub>=1.2, which conflicts with the above
+
+# --- LangChain stack (rag04, rag05) ---
+langchain
+langchain-community
+langchain-groq
+langchain-chroma
+langchain-huggingface
+chromadb
+pypdf
+
+# --- Embeddings / transformers (rag04, rag06, rag08) ---
+sentence-transformers
+transformers>=4.40,<5
+huggingface-hub<1
+torch
+einops                  # required by the Jina embeddings model (rag06)
+
+# --- Data / ML / viz ---
+numpy
+pandas
+scikit-learn
+plotly                  # rag05
+
+# --- App / misc ---
+gradio<6                # rag05 web UI
+python-dotenv           # rag05 loads GROQ_API_KEY from .env
