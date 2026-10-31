@@ -18,7 +18,7 @@ A hands-on continuation of the RAG series, exploring techniques that improve
 | [`rag13.py`](rag13.py) | **HyDE query expansion** — **BM25** keyword search with and without a hypothetical answer. Runs offline, using a fixed stand-in for the LLM's answer. |
 | [`late_chunking_explained.ipynb`](late_chunking_explained.ipynb) | **Late chunking, step by step** — early vs. late embeddings for two chunks of one sentence, using `bge-small` and plain `transformers`. Saved with outputs, and it measures where late chunking helps and where it doesn't. A companion to `rag06.py`, which compares retrieval on a longer document. |
 
-> **Related repos in this RAG series:** two sibling lessons live in their own repos —
+> **Related repos in this RAG series:** two sibling projects live in their own repos —
 > contextual embeddings (`rag07`) in
 > [`rag-embeddings-basics`](https://github.com/VinayakMokashi/rag-embeddings-basics),
 > and retrieval metrics / recall@k & precision@k (`rag09`) in
