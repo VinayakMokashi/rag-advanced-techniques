@@ -15,6 +15,10 @@ langchain-huggingface
 chromadb
 pypdf
 
+# --- Agentic RAG with LangGraph (rag14, rag15) ---
+langgraph
+langchain-openai        # gpt-oss-120b on Cerebras or Groq through their OpenAI-compatible APIs
+
 # --- Embeddings / transformers (rag04, rag06, rag08, rag10-12, notebook) ---
 sentence-transformers
 transformers>=4.40,<5
@@ -31,4 +35,4 @@ plotly                  # rag05
 
 # --- App / misc ---
 gradio<6                # rag05 web UI
-python-dotenv           # rag05 loads GROQ_API_KEY from .env
+python-dotenv           # rag05, rag14, rag15 load API keys from .env
