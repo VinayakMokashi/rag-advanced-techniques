@@ -18,6 +18,7 @@ pypdf
 # --- Agentic RAG with LangGraph (rag14, rag15) ---
 langgraph
 langchain-openai        # gpt-oss-120b on Cerebras or Groq through their OpenAI-compatible APIs
+ddgs                    # rag15: free web search, no API key
 
 # --- Embeddings / transformers (rag04, rag06, rag08, rag10-12, notebook) ---
 sentence-transformers
