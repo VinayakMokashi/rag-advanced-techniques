@@ -3,7 +3,7 @@ PDF chat application -- conversational RAG over your own PDFs.
 
 Upload one or more PDF files through a Gradio web UI; the app splits them into
 chunks, embeds the chunks into a persistent Chroma vector store, and then lets you
-chat with their contents. Each question is answered by a Groq-hosted LLaMA model
+chat with their contents. Each question is answered by gpt-oss-120b, hosted on Groq,
 using only the most relevant chunks retrieved from the PDFs, and a conversation
 memory keeps track of the dialogue so follow-up questions work.
 
@@ -44,7 +44,7 @@ class PDFChatApp:
 
     def __init__(self, db_name="pdf_db"):
         # Groq-hosted model used to answer questions.
-        self.model = "llama-3.3-70b-versatile"
+        self.model = "openai/gpt-oss-120b"
         # Folder where the Chroma vector store is persisted on disk.
         self.db_name = db_name
 
@@ -125,7 +125,9 @@ class PDFChatApp:
         if not self.vectorstore:
             return None
 
-        llm = ChatGroq(model_name=self.model)
+        # gpt-oss counts its hidden reasoning against max_tokens; without an explicit
+        # limit, long answers can be cut off and come back empty.
+        llm = ChatGroq(model=self.model, max_tokens=2048, reasoning_effort="low", max_retries=6)
         memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
         retriever = self.vectorstore.as_retriever(search_kwargs={"k": k})
 

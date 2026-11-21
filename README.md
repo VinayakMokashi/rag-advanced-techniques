@@ -10,7 +10,7 @@ workflows that check their own retrieval and answers.
 | File | Description |
 |------|-------------|
 | [`rag04.py`](rag04.py) | **Chunking visualization** — splits a document with `RecursiveCharacterTextSplitter` and prints each chunk, highlighting the text that **overlaps** with the next chunk so you can *see* how chunk size and overlap behave. |
-| [`rag05.py`](rag05.py) | **PDF chat app** — a **Gradio** web UI that ingests PDFs, embeds them into a **Chroma** vector store, and answers questions with a **Groq**-hosted LLaMA model. Conversational RAG with memory (`ConversationalRetrievalChain`). |
+| [`rag05.py`](rag05.py) | **PDF chat app** — a **Gradio** web UI that ingests PDFs, embeds them into a **Chroma** vector store, and answers questions with `gpt-oss-120b` hosted on **Groq**. Conversational RAG with memory (`ConversationalRetrievalChain`). |
 | [`rag06.py`](rag06.py) | **Late chunking** — compares *traditional* chunking against the **late chunking** method (embed the whole document first, then pool per-chunk) using **Jina** embeddings, and prints which approach retrieves the right chunk. |
 | [`rag08.py`](rag08.py) | **Cross-encoder reranking** — reorders candidate documents for a query with a **cross-encoder** (`ms-marco-MiniLM`) that scores query–document pairs jointly, a more accurate (but heavier) alternative to bi-encoder similarity. |
 | [`rag10.py`](rag10.py) | **Measuring a reranker** — ranks labelled documents with a bi-encoder and a cross-encoder and prints **precision@k and recall@k** for both. On this example the cross-encoder reaches 1.00 / 1.00 at k=2, where the bi-encoder scores 0.50 / 0.50. |
